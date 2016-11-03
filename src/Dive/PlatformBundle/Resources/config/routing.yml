@@ -1,0 +1,31 @@
+# route pour la page des villes
+dive_platform_city:
+    path:   /
+    defaults:   { _controller: DivePlatformBundle:Dive:city }
+
+# route pour la page des centres
+dive_platform_center:
+    path:   /center
+    defaults:   { _controller: DivePlatformBundle:Dive:center }
+
+# route pour la page des adherents
+dive_platform_adherent:
+    path:   /adherent
+    defaults:   { _controller: DivePlatformBundle:Dive:adherent }
+
+# route pour la page de log in
+dive_platform_adm:
+    path:   /adm
+    defaults:   { _controller: DivePlatformBundle:Dive:adm }
+
+dive_platform_rmcity:
+    path:    /rmcity
+    defaults:    {_controller: DivePlatformBundle:Dive:rmcity }
+
+dive_platform_rmcenter:
+    path:    /rmcenter
+    defaults:    {_controller: DivePlatformBundle:Dive:rmcenter}
+
+dive_platform_rmadherent:
+    path:    /rmadherent
+    defaults:    {_controller: DivePlatformBundle:Dive:rmadherent}

@@ -1,0 +1,36 @@
+{% extends "DivePlatformBundle::index.html.twig" %}
+
+{% block title %}{{ parent() }} - Center {% endblock %}
+
+{% block content %}
+   <h1> Center </h1>
+   {% if is_granted('ROLE_ADMIN') %}
+   <h2> Add Center </h2>
+    {{ form(form) }}
+    <h2> Remove Center </h2>
+     <form action="{{ path('dive_platform_rmcenter')}}" method="post">
+    	<input type="text" name="center"/>
+    	<input type="submit" value="Remove" />
+    </form>
+    {% endif %}
+    <h2> Display Center </h2>
+    <table>
+        <tr>
+            <th>
+                Center name
+            </th>
+            <th>
+                city name
+            </th>
+            <th>
+                Adherent number
+            </th>
+        </tr>
+    		{% for centername in center %}
+    			<tr><td>{{ centername.name }}</td>
+                    <td>{{ centername.city.name }}</td>
+                    <td>{{ centername.adherents | length }}</td>
+                </tr>
+    		{% endfor %}
+    </table>
+{% endblock %}

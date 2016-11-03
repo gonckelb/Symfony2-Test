@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title> {% block title %}Dive {% endblock %}</title>
+    </head>
+    <body>
+
+        <ul>
+            <li>
+                <a href="{{ path('dive_platform_city') }}">City</a>
+            </li>
+            <li>
+                <a href="{{ path('dive_platform_center') }}">Center</a>
+            </li>
+            <li>
+                <a href="{{ path('dive_platform_adherent') }}">Adherent</a>
+            </li>
+            {% if is_granted('ROLE_ADMIN') %}
+                <li>
+                    <a href="{{ path('logout') }}">Log Out</a>
+                </li>
+            {% else %}
+                <li>
+                    <a href="{{ path('login') }}">Log In</a>
+                </li>
+            {% endif %}
+        </ul>
+        {% block content %}
+        {% endblock %}
+    </body>
+</html>

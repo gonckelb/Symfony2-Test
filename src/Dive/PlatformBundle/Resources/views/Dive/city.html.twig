@@ -1,0 +1,30 @@
+{% extends "DivePlatformBundle::index.html.twig" %}
+
+{% block title %}{{ parent() }} - City {% endblock %}
+
+{% block content %}
+    <h1> City </h1>
+    {% if is_granted('ROLE_ADMIN') %}
+    <h2> Add City </h2>
+    {{ form(form) }}
+    <h2> Remove City </h2>
+    <form action="{{ path('dive_platform_rmcity')}}" method="post">
+    	<input type="text" name="city"/>
+    	<input type="submit" value="Remove" />
+    </form>
+    {% endif %}
+    <h2>Display City</h2>
+    <table>
+        <tr>
+            <th>
+                City Name
+            </th>
+            <th>
+                Adherent number
+            </th>
+        </tr>
+    		{% for cityname in city %}
+    			<tr><td>{{ cityname.name }}</td><td>{{ cityname.getNbAdherent() }}</td></tr>
+    		{% endfor %}
+    </table>
+{% endblock %}

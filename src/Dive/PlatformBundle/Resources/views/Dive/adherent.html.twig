@@ -1,0 +1,46 @@
+{% extends "DivePlatformBundle::index.html.twig" %}
+
+{% block title %}{{ parent() }} - Adherent {% endblock %}
+
+{% block content %}
+    <h1> Adherent </h1>
+{% if is_granted('ROLE_ADMIN') %}
+   <h2> Add Adherent </h2>
+    {{ form(form) }}
+    <h2> Remove Adherent </h2>
+     <form action="{{ path('dive_platform_rmadherent')}}" method="post">
+    	<input type="text" name="adherent"/>
+    	<input type="submit" value="Remove" />
+    </form>
+    {% endif %}
+    <h2> Display Adherent </h2>
+    <table>
+        <tr>
+            <th>
+                Adherent name
+            </th>
+            <th>
+                centers names
+            </th>
+            <th>
+                Creation date
+            </th>
+        </tr>
+    		{% for adherentname in adherent %}
+    			<tr>
+    				<td>{{ adherentname.name }}</td>
+    				<td>
+                            {% for center in adherentname.centers %}
+                                {{ center.name }}
+                                {% if not loop.last %}
+                                    ,
+                                {% endif %}
+                            {% endfor %}
+    				</td>
+                    <td>
+                        {{ adherentname.date | date("l d F Y") }}
+                    </td>
+    			</tr>
+    		{% endfor %}
+    </table>
+{% endblock %}
